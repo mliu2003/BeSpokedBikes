@@ -102,22 +102,22 @@ const InfoPage = () => {
     []
   );
 
-	const salespersonListColumns = React.useMemo(
+  const salespersonListColumns = React.useMemo(
     () => [
-			{
-				Header: "Name",
-				columns: [
-					{
-						Header: "First Name",
-						accessor: "firstName",
-					},
-					{
-						Header: "Last Name",
-						accessor: "lastName",
-					},
-				],
-				width: '30%',
-			},
+      {
+        Header: "Name",
+        columns: [
+          {
+            Header: "First Name",
+            accessor: "firstName",
+          },
+          {
+            Header: "Last Name",
+            accessor: "lastName",
+          },
+        ],
+        width: "30%",
+      },
       {
         Header: "Info",
         columns: [
@@ -152,22 +152,22 @@ const InfoPage = () => {
     []
   );
 
-	const customerListColumns = React.useMemo(
+  const customerListColumns = React.useMemo(
     () => [
-			{
-				Header: "Name",
-				columns: [
-					{
-						Header: "First Name",
-						accessor: "firstName",
-					},
-					{
-						Header: "Last Name",
-						accessor: "lastName",
-					},
-				],
-				width: '40%'
-			},
+      {
+        Header: "Name",
+        columns: [
+          {
+            Header: "First Name",
+            accessor: "firstName",
+          },
+          {
+            Header: "Last Name",
+            accessor: "lastName",
+          },
+        ],
+        width: "40%",
+      },
       {
         Header: "Info",
         columns: [
@@ -263,50 +263,128 @@ const InfoPage = () => {
     },
   ];
 
-	const exampleSalespersonList = [
+  const [exampleSalespersonList, setExampleSalespersonList] = useState([
     {
       firstName: "Nameame",
-			lastName: "nanananandqwi",
-			address: "aawdopqwwpq",
-			phone: "10230231",
-			startDate: "12/12/12",
-			endDate: "12/12/12",
-			manager: "mmmmmmmm",
+      lastName: "nanananandqwi",
+      address: "aawdopqwwpq",
+      phone: "10230231",
+      startDate: "12/12/12",
+      endDate: "12/12/12",
+      manager: "mmmmmmmm",
     },
-  ];
+  ]);
 
-	const exampleCustomerList = [
+  const exampleCustomerList = [
     {
       firstName: "N231ameame",
-			lastName: "nqwdqdioja",
-			address: "aawdopqwwpq",
-			phone: "10230231",
-			startDate: "12/12/12",
+      lastName: "nqwdqdioja",
+      address: "aawdopqwwpq",
+      phone: "10230231",
+      startDate: "12/12/12",
     },
   ];
 
-	const exampleSalesList = [
+  const exampleSalesList = [
     {
       product: "qpeowq", //this will link to a product in the db
-			salesperson: "qwqpoew", //this will link to a salesperson in the db
-			customer: "qqpwoewq", //this will link to a customer in the db
-			date: "12/12/12",
-			price: "120321", //from product: purchase price
-			commission: "123201" //from product: commission percent & price
+      salesperson: "qwqpoew", //this will link to a salesperson in the db
+      customer: "qqpwoewq", //this will link to a customer in the db
+      date: "12/12/12",
+      // commission and price don't actually exist in DB
+      price: "120321", //from product: purchase price
+      commission: "123201", //from product: commission percent & price
     },
   ];
 
+  function updateSalesperson() {
+    const info = {...updateSalespersonState};
+    console.log(info);
+    const salesperson = {
+      firstName: info.firstName,
+      lastName: info.lastName,
+      address: info.address,
+      phone: info.phone,
+      startDate: info.startDate,
+      endDate: info.endDate,
+      manager: info.manager,
+    };
+    // Sends info to middle tier, and then fetches the list of salespersons again
+    // Something like dispatch(PUT, middleTier, info)
+    setExampleSalespersonList([
+      ...exampleSalespersonList,
+      salesperson,
+    ]);
+    console.log(exampleSalespersonList);
+  };
+
+  const [updateSalespersonState, setUpdateSalespersonState] = useState({
+    firstName: "",
+    lastName: "",
+    address: "",
+    phone: "",
+    startDate: "",
+    endDate: "",
+    manager: "",
+  });
+  function handleSalespersonChange(evt) {
+    setUpdateSalespersonState({
+      ...updateSalespersonState,
+      [evt.target.name]: evt.target.value,
+    });
+    // console.log(updateSalespersonState);
+  }
   return (
     <>
+      <div>
+        <div>
+          <label>
+            First Name:{" "}
+            <input name="firstName" value={updateSalesperson.firstName} onChange={handleSalespersonChange} />
+          </label>
+          <br />
+          <label>
+            Last Name:{" "}
+            <input name="lastName" onChange={handleSalespersonChange} />
+          </label>
+          <br />
+          <label>
+            Address: <input name="address" onChange={handleSalespersonChange} />
+          </label>
+          <br />
+          <label>
+            Phone (XXX-XXX-XXXX):{" "}
+            <input name="phone" onChange={handleSalespersonChange} />
+          </label>
+          <br />
+          <label>
+            Start Date (XX/XX/XXXX):{" "}
+            <input name="startDate" onChange={handleSalespersonChange} />
+          </label>
+          <br />
+          <label>
+            End Date (XX/XX/XXXX):{" "}
+            <input name="endDate" onChange={handleSalespersonChange} />
+          </label>
+          <br />
+          <label>
+            Manager: <input name="manager" onChange={handleSalespersonChange} />
+          </label>
+        </div>
+        <div>
+          <button onClick={updateSalesperson}>Add</button>
+        </div>
+      </div>
+      <br />
       <Table columns={salespersonListColumns} data={exampleSalespersonList} />
-			<br/>
+      <br />
       <Table columns={productListColumns} data={exampleProductList} />
-			<br/>
+      <br />
       <Table columns={customerListColumns} data={exampleCustomerList} />
-			<br/>
+      <br />
       <Table columns={salesListColumns} data={exampleSalesList} />
     </>
   );
-}
+};
 
 export default InfoPage;
