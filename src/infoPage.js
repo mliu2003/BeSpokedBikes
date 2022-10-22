@@ -277,7 +277,7 @@ const InfoPage = () => {
 
 	const exampleCustomerList = [
     {
-      firstName: "Nameame",
+      firstName: "N231ameame",
 			lastName: "nqwdqdioja",
 			address: "aawdopqwwpq",
 			phone: "10230231",
