@@ -334,8 +334,45 @@ const InfoPage = () => {
     });
     // console.log(updateSalespersonState);
   }
+
+  const [data, setData] = React.useState(null);
+
+  React.useEffect(() => {
+    console.log('hey');
+    let response = fetch("http://localhost:3001/api", {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'API-Key': 'secret'
+      }})
+      .then((res) => res.json())
+      .then((data) => setData(data.message));
+    console.log(response);
+
+//     var responseClone; // 1
+// fetch('http://localhost:3001/api')
+// .then(function (response) {
+//     responseClone = response.clone(); // 2
+//     return response.json();
+// })
+// .then(function (data) {
+//     // Do something with data
+// }, function (rejectionReason) { // 3
+//     console.log('Error parsing JSON from response:', rejectionReason, responseClone); // 4
+//     responseClone.text() // 5
+//     .then(function (bodyText) {
+//         console.log('Received the following instead of valid JSON:', bodyText); // 6
+//     });
+// });
+  }, []);
+
   return (
     <>
+      <div className="App">
+        <header className="App-header">
+          <p>{!data ? "Loading..." : data}</p>
+        </header>
+      </div>
       <div>
         <div>
           <label>
