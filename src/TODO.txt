@@ -7,3 +7,5 @@ Update/add product/sales/etc.
 UML diagrams?
 
 update readme to be more in depth?
+
+cleanup infopage
