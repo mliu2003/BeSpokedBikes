@@ -1,2 +1,2 @@
-# BeSpokedBikes
-BeSpoked Bikes Exercise
+# BeSpoked Bikes Exercise
+# Author: Max Liu

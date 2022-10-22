@@ -1,0 +1,9 @@
+Delete all extra files & upload to github
+
+Database. How?
+
+Update/add product/sales/etc.
+
+UML diagrams?
+
+update readme to be more in depth?
