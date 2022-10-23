@@ -165,7 +165,7 @@ export const saleListColumns = [
 
 export const commissionListColumns = [
   {
-    Header: "Total Commissions",
+    Header: " ",
     columns: [
       {
         Header: "Salesperson",

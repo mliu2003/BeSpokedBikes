@@ -357,12 +357,12 @@ export const SaleForm = () => {
         </label>
         <br />
         <label>
-          Sold Product Manufacturer:{" "}
+          Product Manufacturer:{" "}
           <input name="manufacturer" onChange={handleFormChange} />
         </label>
         <br />
         <label>
-          Sold Product Style: <input name="style" onChange={handleFormChange} />
+          Product Style (Type): <input name="style" onChange={handleFormChange} />
         </label>
         <br />
         <label>
