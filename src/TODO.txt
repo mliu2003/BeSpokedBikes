@@ -1,19 +1,17 @@
-Delete all extra files & upload to github
-clean the data file
-
-Database. How?
-
 Update/add product/sales/etc.
+Auto refresh info page
+remember sales in the DB is a lot of ints, NOT strings
+finish transferring all functions into backend
+no duplicate products/salespersons
 
-UML diagrams?
+
+cleanup infopage + make prettier
+
 
 update readme to be more in depth?
 
-cleanup infopage
 
-remember sales in the DB is a lot of ints, NOT strings
-
-update instead of add
+talk abt how no sql :(
 
 talk abt how the pushing, etc. is a bit wonky and inefficient. would have liked to fix that
 (i.e. not calling all data every time, although that's a side effect of not having sql)

@@ -6,7 +6,12 @@ import {
   customerListColumns,
   saleListColumns,
 } from "./columns.js";
-import { SalespersonForm } from "./forms.js";
+import {
+  SalespersonForm,
+  ProductForm,
+  CustomerForm,
+  SaleForm,
+} from "./forms.js";
 
 function Table({ columns, data }) {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
@@ -82,92 +87,12 @@ const InfoPage = () => {
   var customerList = data?.customerList ?? [];
   var saleList = data?.saleList ?? [];
 
-  // function updateSalesperson() {
-  //   const info = {...updateSalespersonState};
-  //   const salesperson = {
-  //     firstName: info.firstName,
-  //     lastName: info.lastName,
-  //     address: info.address,
-  //     phone: info.phone,
-  //     startDate: info.startDate,
-  //     endDate: info.endDate,
-  //     manager: info.manager,
-  //   };
-  //   // Sends info to middle tier, and then fetches the list of salespersons again
-  //   // Something like dispatch(PUT, middleTier, info)
-  //   setExampleSalespersonList([
-  //     ...exampleSalespersonList,
-  //     salesperson,
-  //   ]);
-  //   // console.log(exampleSalespersonList);
-  // };
-
-  // const [updateSalespersonState, setUpdateSalespersonState] = useState({
-  //   firstName: "",
-  //   lastName: "",
-  //   address: "",
-  //   phone: "",
-  //   startDate: "",
-  //   endDate: "",
-  //   manager: "",
-  // });
-  // function handleSalespersonChange(evt) {
-  //   setUpdateSalespersonState({
-  //     ...updateSalespersonState,
-  //     [evt.target.name]: evt.target.value,
-  //   });
-  //   // console.log(updateSalespersonState);
-  // }
-
-  const [formState, setFormState] = useState({
-    salesperson: {
-      firstName: "",
-      lastName: "",
-      address: "",
-      phone: "",
-      startDate: "",
-      endDate: "",
-      manager: "",
-    },
-    product: {
-      name: "",
-      manufacturer: "",
-      style: "",
-      purchasePrice: "",
-      salePrice: "",
-      qty: 0,
-      // commission percent
-      commission: 0,
-    },
-    customer: {
-      firstName: "",
-      lastName: "",
-      address: "",
-      phone: "",
-      startDate: "",
-    },
-    sale: {
-      product: "",
-      customer: "",
-      date: "",
-      price: "",
-      salesperson: "",
-      // commission amount
-      commission: 0,
-    },
-  });
-  function handleFormChange(evt) {
-    setFormState({
-      ...formState,
-      [evt.target.name]: evt.target.value,
-    });
-  }
-
-  // console.log(formState);
-
   return (
     <>
       <SalespersonForm></SalespersonForm>
+      <ProductForm></ProductForm>
+      <CustomerForm></CustomerForm>
+      <SaleForm></SaleForm>
       <br />
       <Table columns={salespersonListColumns} data={salespersonList} />
       <br />

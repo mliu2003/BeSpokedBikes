@@ -57,7 +57,6 @@ app.post("/customer", (req, res) => {
   const loadJSON = (path) => JSON.parse(fs.readFileSync(new URL(path, import.meta.url)));
   const data = loadJSON('../data/data.json');
   const json = JSON.parse(JSON.stringify(data));
-  // Check req.body.firstName + req.body.lastName to see if need to update
   json['customerList'].push(req.body);
   // console.log(json);
   fs.writeFile('data/data.json', JSON.stringify(json), (err) => { 
@@ -70,7 +69,6 @@ app.post("/sale", (req, res) => {
   const loadJSON = (path) => JSON.parse(fs.readFileSync(new URL(path, import.meta.url)));
   const data = loadJSON('../data/data.json');
   const json = JSON.parse(JSON.stringify(data));
-  // Check req.body.firstName + req.body.lastName to see if need to update
   json['saleList'].push(req.body);
   // console.log(json);
   fs.writeFile('data/data.json', JSON.stringify(json), (err) => { 
