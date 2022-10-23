@@ -1,5 +1,4 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { useTable } from "react-table";
 import {
   productListColumns,
   salespersonListColumns,
@@ -12,59 +11,7 @@ import {
   CustomerForm,
   SaleForm,
 } from "./forms.js";
-
-function Table({ columns, data }) {
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({
-      columns,
-      data,
-    });
-
-  return (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th
-                {...column.getHeaderProps({
-                  style: {
-                    width: column.width,
-                    borderBottom: "3px solid black",
-                  },
-                })}
-              >
-                {column.render("Header")}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row, i) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return (
-                  <td
-                    {...cell.getCellProps({
-                      style: {
-                        borderBottom: "1px solid black",
-                      },
-                    })}
-                  >
-                    {cell.render("Cell")}
-                  </td>
-                );
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-  );
-}
+import Table from "./components.js"
 
 const InfoPage = () => {
   const [data, setData] = useState(null);
@@ -79,8 +26,6 @@ const InfoPage = () => {
       .then((res) => res.json())
       .then((data) => setData(data.message));
   }, []);
-
-  // console.log(data);
 
   var productList = data?.productList ?? [];
   var salespersonList = data?.salespersonList ?? [];

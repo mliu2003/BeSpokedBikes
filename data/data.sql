@@ -1,3 +1,5 @@
+-- Hypothetically, this would create all the local tables/database.
+
 -- Create Product table
 CREATE TABLE Product
 (

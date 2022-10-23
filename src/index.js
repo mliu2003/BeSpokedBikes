@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import './index.css';
 import InfoPage from './infoPage.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
