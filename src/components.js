@@ -1,4 +1,5 @@
 import { useTable } from "react-table";
+import "./styles.css";
 
 export default function Table({ columns, data }) {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
@@ -8,7 +9,7 @@ export default function Table({ columns, data }) {
     });
 
   return (
-    <table {...getTableProps()}>
+    <table className="tablePiece" {...getTableProps()}>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>

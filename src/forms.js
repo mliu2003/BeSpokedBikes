@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import "./styles.css";
 
 export const SalespersonForm = () => {
   const [formState, setFormState] = useState({
@@ -55,7 +56,7 @@ export const SalespersonForm = () => {
   }
 
   return (
-    <div>
+    <div className="cardStyle">
       <div>
         <h3>Update or Add Salesperson</h3>
       </div>
@@ -73,24 +74,37 @@ export const SalespersonForm = () => {
         </label>
         <br />
         <label>
-          Phone (XXX-XXX-XXXX):{" "}
-          <input name="phone" onChange={handleFormChange} />
+          Phone:{" "}
+          <input
+            name="phone"
+            placeholder="XXX-XXX-XXXX"
+            onChange={handleFormChange}
+          />
         </label>
         <br />
         <label>
-          Start Date (XX/XX/XXXX):{" "}
-          <input name="startDate" onChange={handleFormChange} />
+          Start Date:{" "}
+          <input
+            name="startDate"
+            placeholder="XX/XX/XXXX"
+            onChange={handleFormChange}
+          />
         </label>
         <br />
         <label>
-          End Date (XX/XX/XXXX):{" "}
-          <input name="endDate" onChange={handleFormChange} />
+          End Date:{" "}
+          <input
+            name="endDate"
+            placeholder="XX/XX/XXXX"
+            onChange={handleFormChange}
+          />
         </label>
         <br />
         <label>
           Manager: <input name="manager" onChange={handleFormChange} />
         </label>
       </div>
+      <br />
       <div>
         <button onClick={handleFormSubmit}>Update</button>
         <label> </label>
@@ -141,7 +155,7 @@ export const CustomerForm = () => {
   }
 
   return (
-    <div>
+    <div className="cardStyle">
       <div>
         <h3>Add Customer</h3>
       </div>
@@ -159,15 +173,24 @@ export const CustomerForm = () => {
         </label>
         <br />
         <label>
-          Phone (XXX-XXX-XXXX):{" "}
-          <input name="phone" onChange={handleFormChange} />
+          Phone:{" "}
+          <input
+            name="phone"
+            placeholder="XXX-XXX-XXXX"
+            onChange={handleFormChange}
+          />
         </label>
         <br />
         <label>
-          Start Date (XX/XX/XXXX):{" "}
-          <input name="startDate" onChange={handleFormChange} />
+          Start Date:{" "}
+          <input
+            name="startDate"
+            placeholder="XX/XX/XXXX"
+            onChange={handleFormChange}
+          />
         </label>
       </div>
+      <br />
       <div>
         <button onClick={handleFormSubmit}>Add</button>
       </div>
@@ -229,7 +252,7 @@ export const ProductForm = () => {
   }
 
   return (
-    <div>
+    <div className="cardStyle">
       <div>
         <h3>Update or Add Product</h3>
       </div>
@@ -244,7 +267,7 @@ export const ProductForm = () => {
         </label>
         <br />
         <label>
-          Style: <input name="style" onChange={handleFormChange} />
+          Style (Type): <input name="style" onChange={handleFormChange} />
         </label>
         <br />
         <label>
@@ -252,7 +275,7 @@ export const ProductForm = () => {
         </label>
         <br />
         <label>
-          Quantity: <input name="qty" onChange={handleFormChange} />
+          Quantity (In stock): <input name="qty" onChange={handleFormChange} />
         </label>
         <br />
         <label>
@@ -260,6 +283,7 @@ export const ProductForm = () => {
           <input name="commission" onChange={handleFormChange} />
         </label>
       </div>
+      <br />
       <div>
         <button onClick={handleFormSubmit}>Update</button>
         <label> </label>
@@ -322,47 +346,55 @@ export const SaleForm = () => {
   }
 
   return (
-    <div>
+    <div className="cardStyle">
       <div>
         <h3>Add Sale</h3>
       </div>
       <div>
         <label>
-          Product: <input name="product" onChange={handleFormChange} />
-          <label> </label>
-          <label>
-            Manufacturer:{" "}
-            <input name="manufacturer" onChange={handleFormChange} />
-          </label>
-          <label> </label>
-          <label>
-            Style: <input name="style" onChange={handleFormChange} />
-          </label>
+          Sold Product Name:{" "}
+          <input name="product" onChange={handleFormChange} />
+        </label>
+        <br />
+        <label>
+          Sold Product Manufacturer:{" "}
+          <input name="manufacturer" onChange={handleFormChange} />
+        </label>
+        <br />
+        <label>
+          Sold Product Style: <input name="style" onChange={handleFormChange} />
         </label>
         <br />
         <label>
           Customer First Name:{" "}
           <input name="customerFirst" onChange={handleFormChange} />
         </label>
-        <label> </label>
+        <br />
         <label>
-          Last Name: <input name="customerLast" onChange={handleFormChange} />
+          Customer Last Name:{" "}
+          <input name="customerLast" onChange={handleFormChange} />
         </label>
         <br />
         <label>
-          Date (XX/XX/XXXX): <input name="date" onChange={handleFormChange} />
+          Date of Product Sale:{" "}
+          <input
+            name="date"
+            placeholder="XXX-XXX-XXXX"
+            onChange={handleFormChange}
+          />
         </label>
         <br />
         <label>
           Salesperson First Name:{" "}
           <input name="salespersonFirst" onChange={handleFormChange} />
         </label>
-        <label> </label>
+        <br />
         <label>
-          Last Name:{" "}
+          Salesperson Last Name:{" "}
           <input name="salespersonLast" onChange={handleFormChange} />
         </label>
       </div>
+      <br />
       <div>
         <button onClick={handleFormSubmit}>Add</button>
         <label> </label>

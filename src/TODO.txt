@@ -13,3 +13,4 @@ talk abt how the adding data, etc. is a bit wonky and inefficient. would have li
 (i.e. not calling all data every time, although that's a side effect of not having sql)
 talk abt how would have liked a lot more of the logic to be naturally handled, such as commission price being naturally calced
 just overall, the pieces don't connect as well as i would have liked them to
+talk about how want to add pagination and make stuff prettier

@@ -1,6 +1,6 @@
 export const productListColumns = [
   {
-    Header: "Info",
+    Header: "Product Info",
     columns: [
       {
         Header: "Product Name",

@@ -14,10 +14,12 @@ import {
   SaleForm,
 } from "./forms.js";
 import Table from "./components.js";
+import bike from "./bespokedBikes.png";
+import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
 
 const InfoPage = () => {
-  const state = useSelector((state) => (state));
+  const state = useSelector((state) => state);
   const [data, setData] = useState(null);
   useEffect(() => {
     let response = fetch("http://localhost:3001/data", {
@@ -54,17 +56,46 @@ const InfoPage = () => {
 
   return (
     <>
-      <SalespersonForm></SalespersonForm>
-      <Table columns={salespersonListColumns} data={salespersonList} />
+      <div className="defaultPageStyle">
+        <img src={bike}></img>
+        <h1>BeSpoked Bikes</h1>
+      </div>
+
+      <div className="bigCard">
+        <h2 className="defaultPageStyle">Salespeople</h2>
+        <div className="inCard">
+          <SalespersonForm></SalespersonForm>
+          <Table columns={salespersonListColumns} data={salespersonList} />
+        </div>
+        <br />
+      </div>
       <br />
-      <ProductForm></ProductForm>
-      <Table columns={productListColumns} data={productList} />
+      <div className="bigCard">
+        <h2 className="defaultPageStyle">Products</h2>
+        <div className="inCard">
+          <ProductForm></ProductForm>
+          <Table columns={productListColumns} data={productList} />
+        </div>
+        <br />
+      </div>
       <br />
-      <CustomerForm></CustomerForm>
-      <Table columns={customerListColumns} data={customerList} />
+      <div className="bigCard">
+        <h2 className="defaultPageStyle">Customers</h2>
+        <div className="inCard">
+          <CustomerForm></CustomerForm>
+          <Table columns={customerListColumns} data={customerList} />
+        </div>
+        <br />
+      </div>
       <br />
-      <SaleForm></SaleForm>
-      <Table columns={saleListColumns} data={saleList} />
+      <div className="bigCard">
+        <h2 className="defaultPageStyle">Sales</h2>
+        <div className="inCard">
+          <SaleForm></SaleForm>
+          <Table columns={saleListColumns} data={saleList} />
+        </div>
+        <br />
+      </div>
       <br />
     </>
   );
