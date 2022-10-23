@@ -260,6 +260,14 @@ app.get("/commission", (req, res) => {
     JSON.parse(fs.readFileSync(new URL(path, import.meta.url)));
   const data = loadJSON("../data/data.json");
   const json = JSON.parse(JSON.stringify(data));
+  const commissionReport = [];
+  json["salespersonList"].forEach((salesperson) => {
+    commissionReport.push({
+      name: salesperson.firstName + " " + salesperson.lastName,
+      commission: salesperson.commission
+    });
+  })
+  res.json({ message: commissionReport });
 });
 
 app.listen(PORT, () => {

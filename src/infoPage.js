@@ -11,7 +11,7 @@ import {
   CustomerForm,
   SaleForm,
 } from "./forms.js";
-import Table from "./components.js"
+import Table from "./components.js";
 
 const InfoPage = () => {
   const [data, setData] = useState(null);
@@ -31,6 +31,22 @@ const InfoPage = () => {
   var salespersonList = data?.salespersonList ?? [];
   var customerList = data?.customerList ?? [];
   var saleList = data?.saleList ?? [];
+
+  const [commissionReport, setCommissionReport] = useState();
+  useEffect(() => {
+    let response = fetch("http://localhost:3001/commission", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "API-Key": "secret",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.message);
+        setCommissionReport(data.message);
+      });
+  }, []);
 
   return (
     <>
