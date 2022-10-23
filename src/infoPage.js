@@ -12,8 +12,10 @@ import {
   SaleForm,
 } from "./forms.js";
 import Table from "./components.js";
+import { useDispatch, useSelector } from "react-redux";
 
 const InfoPage = () => {
+  const state = useSelector((state) => (state));
   const [data, setData] = useState(null);
   useEffect(() => {
     let response = fetch("http://localhost:3001/data", {
@@ -25,7 +27,7 @@ const InfoPage = () => {
     })
       .then((res) => res.json())
       .then((data) => setData(data.message));
-  }, []);
+  }, [state.render]);
 
   var productList = data?.productList ?? [];
   var salespersonList = data?.salespersonList ?? [];

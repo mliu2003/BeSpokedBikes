@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export const SalespersonForm = () => {
   const [formState, setFormState] = useState({
@@ -11,6 +12,8 @@ export const SalespersonForm = () => {
     manager: "",
   });
   const [msg, setMsg] = useState();
+  const state = useSelector((state) => (state));
+  const dispatch = useDispatch();
 
   function handleFormChange(evt) {
     setFormState({
@@ -50,6 +53,7 @@ export const SalespersonForm = () => {
         setMsg();
       }
     });
+    state.render === 1 ? dispatch({ render: 0}) : dispatch({ render: 1});
   }
 
   return (
@@ -106,6 +110,8 @@ export const CustomerForm = () => {
     phone: "",
     startDate: "",
   });
+  const state = useSelector((state) => (state));
+  const dispatch = useDispatch();
 
   function handleFormChange(evt) {
     setFormState({
@@ -134,6 +140,7 @@ export const CustomerForm = () => {
       },
       body: body,
     });
+    state.render === 1 ? dispatch({ render: 0}) : dispatch({ render: 1});
   }
 
   return (
@@ -182,6 +189,8 @@ export const ProductForm = () => {
     commission: -1,
   });
   const [msg, setMsg] = useState();
+  const state = useSelector((state) => (state));
+  const dispatch = useDispatch();
 
   function handleFormChange(evt) {
     setFormState({
@@ -221,6 +230,7 @@ export const ProductForm = () => {
         setMsg();
       }
     });
+    state.render === 1 ? dispatch({ render: 0}) : dispatch({ render: 1});
   }
 
   return (
@@ -276,6 +286,8 @@ export const SaleForm = () => {
     commission: -1,
   });
   const [msg, setMsg] = useState();
+  const state = useSelector((state) => (state));
+  const dispatch = useDispatch();
 
   function handleFormChange(evt) {
     setFormState({
@@ -316,6 +328,7 @@ export const SaleForm = () => {
           setMsg();
         }
       });
+      state.render === 1 ? dispatch({ render: 0}) : dispatch({ render: 1});
   }
 
   return (
