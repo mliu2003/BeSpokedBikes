@@ -1,4 +1,5 @@
 Delete all extra files & upload to github
+clean the data file
 
 Database. How?
 
@@ -9,3 +10,10 @@ UML diagrams?
 update readme to be more in depth?
 
 cleanup infopage
+
+remember sales in the DB is a lot of ints, NOT strings
+
+update instead of add
+
+talk abt how the pushing, etc. is a bit wonky and inefficient. would have liked to fix that
+(i.e. not calling all data every time, although that's a side effect of not having sql)

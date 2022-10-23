@@ -1,61 +1,43 @@
 {
   "productList": [
     {
-      "name": "NameNameNameName",
-      "manufacturer": "Manufacturer",
-      "style": "Style",
-      "purchasePrice": "Purchase Price",
-      "salePrice": "Sale Price",
-      "qty": 0,
-      "commission": 0
-    },
-    {
-      "name": "NameN",
-      "manufacturer": "Manufacturer",
-      "style": "Style",
-      "purchasePrice": "Purchase Price",
-      "salePrice": "Sale Price",
-      "qty": 0,
-      "commission": 0
-    },
-    {
-      "name": "NameNameNameNameB",
-      "manufacturer": "Manufacturer",
-      "style": "Style",
-      "purchasePrice": "Purchase Price",
-      "salePrice": "Sale Price",
-      "qty": 0,
-      "commission": 0
+      "name": "Cake",
+      "manufacturer": "Bakery",
+      "style": "Chocolate",
+      "purchasePrice": "$10",
+      "salePrice": "$10",
+      "qty": 1,
+      "commission": 20
     }
   ],
   "salespersonList": [
     {
-      "firstName": "Nameame",
-      "lastName": "nanananandqwi",
-      "address": "aawdopqwwpq",
-      "phone": "10230231",
+      "firstName": "Cake",
+      "lastName": "Maker",
+      "address": "123 Cake Ln",
+      "phone": "111-111-1111",
       "startDate": "12/12/12",
       "endDate": "12/12/12",
-      "manager": "mmmmmmmm"
+      "manager": "Dessert King"
     }
   ],
   "customerList": [
     {
-      "firstName": "N231ameame",
-      "lastName": "nqwdqdioja",
-      "address": "aawdopqwwpq",
-      "phone": "10230231",
+      "firstName": "Cake",
+      "lastName": "Taker",
+      "address": "321 Pastry Ave",
+      "phone": "000-000-0000",
       "startDate": "12/12/12"
     }
   ],
-  "salesList": [
+  "saleList": [
     {
-      "product": "qpeowq",
-      "salesperson": "qwqpoew",
-      "customer": "qqpwoewq",
+      "product": "Cake",
+      "salesperson": "Cake Maker",
+      "customer": "Cake Taker",
       "date": "12/12/12",
-      "price": "120321",
-      "commission": "123201"
+      "price": "$10",
+      "commission": "$2"
     }
   ]
 }

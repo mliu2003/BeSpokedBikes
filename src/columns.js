@@ -125,7 +125,7 @@ export const customerListColumns = [
   },
 ];
 
-export const salesListColumns = [
+export const saleListColumns = [
   {
     Header: "Info",
     columns: [
@@ -155,7 +155,7 @@ export const salesListColumns = [
         width: "20%",
       },
       {
-        Header: "Commission %",
+        Header: "Commission $",
         accessor: "commission",
         width: "10%",
       },

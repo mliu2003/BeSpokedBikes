@@ -1,6 +1,12 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { useTable } from "react-table";
-import { productListColumns, salespersonListColumns, customerListColumns, salesListColumns } from "./columns.js";
+import {
+  productListColumns,
+  salespersonListColumns,
+  customerListColumns,
+  saleListColumns,
+} from "./columns.js";
+import { SalespersonForm } from "./forms.js";
 
 function Table({ columns, data }) {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
@@ -56,24 +62,25 @@ function Table({ columns, data }) {
 }
 
 const InfoPage = () => {
-  const [ data, setData ] = useState(null);
+  const [data, setData] = useState(null);
   useEffect(() => {
-    let response = fetch("http://localhost:3001/test", {
-      method: 'GET',
+    let response = fetch("http://localhost:3001/data", {
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
-        'API-Key': 'secret'
-      }})
+        "Content-Type": "application/json",
+        "API-Key": "secret",
+      },
+    })
       .then((res) => res.json())
       .then((data) => setData(data.message));
   }, []);
 
-  console.log(data);
+  // console.log(data);
 
   var productList = data?.productList ?? [];
   var salespersonList = data?.salespersonList ?? [];
   var customerList = data?.customerList ?? [];
-  var salesList = data?.salesList ?? [];
+  var saleList = data?.saleList ?? [];
 
   // function updateSalesperson() {
   //   const info = {...updateSalespersonState};
@@ -112,47 +119,55 @@ const InfoPage = () => {
   //   // console.log(updateSalespersonState);
   // }
 
+  const [formState, setFormState] = useState({
+    salesperson: {
+      firstName: "",
+      lastName: "",
+      address: "",
+      phone: "",
+      startDate: "",
+      endDate: "",
+      manager: "",
+    },
+    product: {
+      name: "",
+      manufacturer: "",
+      style: "",
+      purchasePrice: "",
+      salePrice: "",
+      qty: 0,
+      // commission percent
+      commission: 0,
+    },
+    customer: {
+      firstName: "",
+      lastName: "",
+      address: "",
+      phone: "",
+      startDate: "",
+    },
+    sale: {
+      product: "",
+      customer: "",
+      date: "",
+      price: "",
+      salesperson: "",
+      // commission amount
+      commission: 0,
+    },
+  });
+  function handleFormChange(evt) {
+    setFormState({
+      ...formState,
+      [evt.target.name]: evt.target.value,
+    });
+  }
+
+  // console.log(formState);
+
   return (
     <>
-      <div>
-        {/* <div>
-          <label>
-            First Name:{" "}
-            <input name="firstName" value={updateSalesperson.firstName} onChange={handleSalespersonChange} />
-          </label>
-          <br />
-          <label>
-            Last Name:{" "}
-            <input name="lastName" onChange={handleSalespersonChange} />
-          </label>
-          <br />
-          <label>
-            Address: <input name="address" onChange={handleSalespersonChange} />
-          </label>
-          <br />
-          <label>
-            Phone (XXX-XXX-XXXX):{" "}
-            <input name="phone" onChange={handleSalespersonChange} />
-          </label>
-          <br />
-          <label>
-            Start Date (XX/XX/XXXX):{" "}
-            <input name="startDate" onChange={handleSalespersonChange} />
-          </label>
-          <br />
-          <label>
-            End Date (XX/XX/XXXX):{" "}
-            <input name="endDate" onChange={handleSalespersonChange} />
-          </label>
-          <br />
-          <label>
-            Manager: <input name="manager" onChange={handleSalespersonChange} />
-          </label>
-        </div>
-        <div>
-          <button onClick={updateSalesperson}>Add</button>
-        </div> */}
-      </div>
+      <SalespersonForm></SalespersonForm>
       <br />
       <Table columns={salespersonListColumns} data={salespersonList} />
       <br />
@@ -160,7 +175,7 @@ const InfoPage = () => {
       <br />
       <Table columns={customerListColumns} data={customerList} />
       <br />
-      <Table columns={salesListColumns} data={salesList} />
+      <Table columns={saleListColumns} data={saleList} />
     </>
   );
 };
