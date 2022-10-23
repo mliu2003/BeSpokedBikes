@@ -1,3 +1,5 @@
+// Please see the README file if you have not already. It explains the reasoning behind some key decisions/flaws.
+
 import React, { useState, useMemo, useEffect } from "react";
 import {
   productListColumns,

@@ -180,13 +180,16 @@ app.post("/customer", (req, res) => {
     JSON.parse(fs.readFileSync(new URL(path, import.meta.url)));
   const data = loadJSON("../data/data.json");
   const json = JSON.parse(JSON.stringify(data));
-  json["customerList"].push(req.body);
-  // console.log(json);
-  fs.writeFile("data/data.json", JSON.stringify(json), (err) => {
-    if (err) {
-      console.log(err);
-    }
-  });
+  if (req.body.firstName === "" || req.body.lastName === "") {
+    res.json({ message: "Name cannot be empty." });
+  } else {
+    json["customerList"].push(req.body);
+    fs.writeFile("data/data.json", JSON.stringify(json), (err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  }
 });
 
 app.post("/sale", (req, res) => {
@@ -264,9 +267,9 @@ app.get("/commission", (req, res) => {
   json["salespersonList"].forEach((salesperson) => {
     commissionReport.push({
       name: salesperson.firstName + " " + salesperson.lastName,
-      commission: salesperson.commission
+      commission: salesperson.commission,
     });
-  })
+  });
   res.json({ message: commissionReport });
 });
 

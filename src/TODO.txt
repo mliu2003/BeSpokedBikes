@@ -1,20 +1,12 @@
-Auto refresh info page (maybe can accomplish this by updating something in the components)
 clear console.logs
 
-need to do the sales report thing
+Sales commission report
 
-errors:
-sale for product that doesnt exist
-sale for salesperson that doesnt exist
-
-cleanup infopage + make prettier
-
-make sure to deal with discounts!!
+Make the frontend prettier
 
 
 update readme to be more in depth?
 - make sure to tell them abt SQL stuff
-- tell them they may need to reload for changes to be reflected due to my stupidity
 
 talk abt how no sql :(
 talk abt how the adding data, etc. is a bit wonky and inefficient. would have liked to fix that

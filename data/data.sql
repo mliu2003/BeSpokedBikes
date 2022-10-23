@@ -19,11 +19,11 @@ CREATE TABLE Salesperson
     SalespersonId INT IDENTITY PRIMARY KEY,
     FirstName VARCHAR(20) NOT NULL,
     LastName VARCHAR(20) NOT NULL,
-    HomeAddress VARCHAR(40) NOT NULL,
-    PhoneNumber VARCHAR(20) NOT NULL,
-    StartDate DATE NOT NULL,
-    EndDate DATE NOT NULL,
-    Manager VARCHAR(20) NOT NULL
+    HomeAddress VARCHAR(40),
+    PhoneNumber VARCHAR(20),
+    StartDate DATE,
+    EndDate DATE,
+    Manager VARCHAR(40)
 )
 
 -- Create Customer table
@@ -32,19 +32,21 @@ CREATE TABLE Customer
     CustomerId INT IDENTITY PRIMARY KEY,
     FirstName VARCHAR(20) NOT NULL,
     LastName VARCHAR(20) NOT NULL,
-    HomeAddress VARCHAR(40) NOT NULL,
-    PhoneNumber VARCHAR(20) NOT NULL,
-    StartDate DATE NOT NULL,
+    HomeAddress VARCHAR(40),
+    PhoneNumber VARCHAR(20),
+    StartDate DATE,
 )
 
 -- Create Sale table
 CREATE TABLE Sale
 (
     SaleId INT IDENTITY PRIMARY KEY,
-    Product INT REFERENCES Product (ProductId),
+    Product INT REFERENCES Product (ProductId),,
+    Salesperson INT REFERENCES Salesperson (SalespersonId)
     Customer INT REFERENCES Customer (CustomerId),
     PurchaseDate DATE NOT NULL,
-    Salesperson INT REFERENCES Salesperson (SalespersonId)
+    Price INT NOT NULL,
+    Commission INT NOT NULL,
 )
 
 -- Create Discount table
@@ -52,7 +54,7 @@ CREATE TABLE Discount
 (
     DiscountId INT IDENTITY PRIMARY KEY,
     Product INT REFERENCES Product (ProductId),
-    BeginDate DATE NOT NULL,
+    StartDate DATE NOT NULL,
     EndDate DATE NOT NULL,
-    DiscountPercentage INT NOT NULL,
+    PercentageSaved INT NOT NULL,
 )

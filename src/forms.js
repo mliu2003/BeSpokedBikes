@@ -12,7 +12,7 @@ export const SalespersonForm = () => {
     manager: "",
   });
   const [msg, setMsg] = useState();
-  const state = useSelector((state) => (state));
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
   function handleFormChange(evt) {
@@ -24,7 +24,6 @@ export const SalespersonForm = () => {
 
   function handleFormSubmit() {
     const info = { ...formState };
-    // console.log(info);
     const salesperson = {
       firstName: info.firstName,
       lastName: info.lastName,
@@ -44,16 +43,15 @@ export const SalespersonForm = () => {
       },
       body: body,
     })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.message !== "success") {
-        console.log(data.message);
-        setMsg(data.message);
-      } else {
-        setMsg();
-      }
-    });
-    state.render === 1 ? dispatch({ render: 0}) : dispatch({ render: 1});
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message !== "success") {
+          setMsg(data.message);
+        } else {
+          setMsg();
+        }
+      });
+    state.render === 1 ? dispatch({ render: 0 }) : dispatch({ render: 1 });
   }
 
   return (
@@ -110,7 +108,7 @@ export const CustomerForm = () => {
     phone: "",
     startDate: "",
   });
-  const state = useSelector((state) => (state));
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
   function handleFormChange(evt) {
@@ -122,7 +120,6 @@ export const CustomerForm = () => {
 
   function handleFormSubmit() {
     const info = { ...formState };
-    // console.log(info);
     const customer = {
       firstName: info.firstName,
       lastName: info.lastName,
@@ -140,7 +137,7 @@ export const CustomerForm = () => {
       },
       body: body,
     });
-    state.render === 1 ? dispatch({ render: 0}) : dispatch({ render: 1});
+    state.render === 1 ? dispatch({ render: 0 }) : dispatch({ render: 1 });
   }
 
   return (
@@ -189,7 +186,7 @@ export const ProductForm = () => {
     commission: -1,
   });
   const [msg, setMsg] = useState();
-  const state = useSelector((state) => (state));
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
   function handleFormChange(evt) {
@@ -201,7 +198,6 @@ export const ProductForm = () => {
 
   function handleFormSubmit() {
     const info = { ...formState };
-    // console.log(info);
     const product = {
       name: info.name,
       manufacturer: info.manufacturer,
@@ -221,16 +217,15 @@ export const ProductForm = () => {
       },
       body: body,
     })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.message !== "success") {
-        console.log(data.message);
-        setMsg(data.message);
-      } else {
-        setMsg();
-      }
-    });
-    state.render === 1 ? dispatch({ render: 0}) : dispatch({ render: 1});
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message !== "success") {
+          setMsg(data.message);
+        } else {
+          setMsg();
+        }
+      });
+    state.render === 1 ? dispatch({ render: 0 }) : dispatch({ render: 1 });
   }
 
   return (
@@ -253,8 +248,7 @@ export const ProductForm = () => {
         </label>
         <br />
         <label>
-          Sale Price ($):{" "}
-          <input name="salePrice" onChange={handleFormChange} />
+          Sale Price ($): <input name="salePrice" onChange={handleFormChange} />
         </label>
         <br />
         <label>
@@ -286,7 +280,7 @@ export const SaleForm = () => {
     commission: -1,
   });
   const [msg, setMsg] = useState();
-  const state = useSelector((state) => (state));
+  const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
   function handleFormChange(evt) {
@@ -295,10 +289,8 @@ export const SaleForm = () => {
       [evt.target.name]: evt.target.value,
     });
   }
-  // let error = null;
   function handleFormSubmit() {
     const info = { ...formState };
-    // console.log(info);
     const sale = {
       product: info.product,
       manufacturer: info.manufacturer,
@@ -310,7 +302,6 @@ export const SaleForm = () => {
       salespersonLast: info.salespersonLast,
     };
     const body = JSON.stringify(sale);
-    // try {
     let response = fetch("http://localhost:3001/sale", {
       method: "POST",
       headers: {
@@ -322,13 +313,12 @@ export const SaleForm = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.message !== "success") {
-          console.log(data.message);
           setMsg(data.message);
         } else {
           setMsg();
         }
       });
-      state.render === 1 ? dispatch({ render: 0}) : dispatch({ render: 1});
+    state.render === 1 ? dispatch({ render: 0 }) : dispatch({ render: 1 });
   }
 
   return (
