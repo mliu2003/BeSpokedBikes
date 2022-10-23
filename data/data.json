@@ -8,42 +8,6 @@
       "salePrice": "$10",
       "qty": 1,
       "commission": 20
-    },
-    {
-      "name": "",
-      "manufacturer": "qw",
-      "style": "qweqwe",
-      "purchasePrice": "wqew",
-      "salePrice": "",
-      "qty": 0,
-      "commission": 0
-    },
-    {
-      "name": "",
-      "manufacturer": "qw",
-      "style": "qweqwe",
-      "purchasePrice": "wqewdsalkas",
-      "salePrice": "",
-      "qty": 0,
-      "commission": 0
-    },
-    {
-      "name": "",
-      "manufacturer": "qw",
-      "style": "qweqwe",
-      "purchasePrice": "wqewdsalkas",
-      "salePrice": "",
-      "qty": 0,
-      "commission": 0
-    },
-    {
-      "name": "qwelaksdasdsaio",
-      "manufacturer": "qw",
-      "style": "qweqwe",
-      "purchasePrice": "wqewdsalkas",
-      "salePrice": "qwewqadoisa",
-      "qty": 0,
-      "commission": 0
     }
   ],
   "salespersonList": [
@@ -64,13 +28,6 @@
       "address": "321 Pastry Ave",
       "phone": "000-000-0000",
       "startDate": "12/12/12"
-    },
-    {
-      "firstName": "adskfn",
-      "lastName": "kajfndsf",
-      "address": "adsfkj",
-      "phone": "asfdskjf",
-      "startDate": "asdfksaj"
     }
   ],
   "saleList": [
@@ -81,14 +38,6 @@
       "date": "12/12/12",
       "price": "$10",
       "commission": "$2"
-    },
-    {
-      "product": "qweqwei",
-      "customer": "qwoeiwq",
-      "date": "qweoiqwe",
-      "price": "oiqwewq",
-      "salesperson": "oiqwewq",
-      "commission": "qwoiewq"
     }
   ]
 }
