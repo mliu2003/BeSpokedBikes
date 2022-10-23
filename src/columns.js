@@ -162,3 +162,21 @@ export const saleListColumns = [
     ],
   },
 ];
+
+export const commissionListColumns = [
+  {
+    Header: "Total Commissions",
+    columns: [
+      {
+        Header: "Salesperson",
+        accessor: "name",
+        width: "50%",
+      },
+      {
+        Header: "Total Commissions",
+        accessor: "commission",
+        width: "50%",
+      },
+    ],
+  },
+];

@@ -1,11 +1,12 @@
 // Please see the README file if you have not already. It explains the reasoning behind some key decisions/flaws.
 
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   productListColumns,
   salespersonListColumns,
   customerListColumns,
   saleListColumns,
+  commissionListColumns,
 } from "./columns.js";
 import {
   SalespersonForm,
@@ -16,7 +17,7 @@ import {
 import Table from "./components.js";
 import bike from "./bespokedBikes.png";
 import "./styles.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const InfoPage = () => {
   const state = useSelector((state) => state);
@@ -38,7 +39,7 @@ const InfoPage = () => {
   var customerList = data?.customerList ?? [];
   var saleList = data?.saleList ?? [];
 
-  const [commissionReport, setCommissionReport] = useState();
+  const [commissionReport, setCommissionReport] = useState([]);
   useEffect(() => {
     let response = fetch("http://localhost:3001/commission", {
       method: "GET",
@@ -49,7 +50,6 @@ const InfoPage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.message);
         setCommissionReport(data.message);
       });
   }, []);
@@ -97,6 +97,10 @@ const InfoPage = () => {
         <br />
       </div>
       <br />
+      <div className="bigCard">
+        <h2 className="defaultPageStyle">Sales Commission Report</h2>
+        <Table columns={commissionListColumns} data={commissionReport} />
+      </div>
     </>
   );
 };
