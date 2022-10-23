@@ -173,7 +173,7 @@ export const commissionListColumns = [
         width: "50%",
       },
       {
-        Header: "Total Commissions",
+        Header: "Total Commission Amount",
         accessor: "commission",
         width: "50%",
       },
