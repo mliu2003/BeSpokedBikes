@@ -18,12 +18,12 @@ export const productListColumns = [
         width: "15%",
       },
       {
-        Header: "Purchase Price",
+        Header: "Purchase  ($)",
         accessor: "purchasePrice",
         width: "10%",
       },
       {
-        Header: "Sale Price",
+        Header: "Sale Price ($)",
         accessor: "salePrice",
         width: "10%",
       },
@@ -117,7 +117,7 @@ export const customerListColumns = [
         width: "15%",
       },
       {
-        Header: "Start Date",
+        Header: "Date",
         accessor: "startDate",
         width: "15%",
       },
@@ -145,7 +145,7 @@ export const saleListColumns = [
         width: "5%",
       },
       {
-        Header: "Price",
+        Header: "Price ($)",
         accessor: "price",
         width: "10%",
       },
@@ -155,7 +155,7 @@ export const saleListColumns = [
         width: "20%",
       },
       {
-        Header: "Commission $",
+        Header: "Commission ($)",
         accessor: "commission",
         width: "10%",
       },

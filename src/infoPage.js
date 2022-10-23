@@ -35,17 +35,17 @@ const InfoPage = () => {
   return (
     <>
       <SalespersonForm></SalespersonForm>
-      <ProductForm></ProductForm>
-      <CustomerForm></CustomerForm>
-      <SaleForm></SaleForm>
-      <br />
       <Table columns={salespersonListColumns} data={salespersonList} />
       <br />
+      <ProductForm></ProductForm>
       <Table columns={productListColumns} data={productList} />
       <br />
+      <CustomerForm></CustomerForm>
       <Table columns={customerListColumns} data={customerList} />
       <br />
+      <SaleForm></SaleForm>
       <Table columns={saleListColumns} data={saleList} />
+      <br />
     </>
   );
 };

@@ -10,6 +10,7 @@ export const SalespersonForm = () => {
     endDate: "",
     manager: "",
   });
+  const [msg, setMsg] = useState();
 
   function handleFormChange(evt) {
     setFormState({
@@ -39,13 +40,22 @@ export const SalespersonForm = () => {
         "API-Key": "secret",
       },
       body: body,
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.message !== "success") {
+        console.log(data.message);
+        setMsg(data.message);
+      } else {
+        setMsg();
+      }
     });
   }
 
   return (
     <div>
       <div>
-        <h3>Update Salesperson</h3>
+        <h3>Update or Add Salesperson</h3>
       </div>
       <div>
         <label>
@@ -61,15 +71,18 @@ export const SalespersonForm = () => {
         </label>
         <br />
         <label>
-          Phone (XXX-XXX-XXXX): <input name="phone" onChange={handleFormChange} />
+          Phone (XXX-XXX-XXXX):{" "}
+          <input name="phone" onChange={handleFormChange} />
         </label>
         <br />
         <label>
-          Start Date (XX/XX/XXXX): <input name="startDate" onChange={handleFormChange} />
+          Start Date (XX/XX/XXXX):{" "}
+          <input name="startDate" onChange={handleFormChange} />
         </label>
         <br />
         <label>
-          End Date (XX/XX/XXXX): <input name="endDate" onChange={handleFormChange} />
+          End Date (XX/XX/XXXX):{" "}
+          <input name="endDate" onChange={handleFormChange} />
         </label>
         <br />
         <label>
@@ -78,6 +91,8 @@ export const SalespersonForm = () => {
       </div>
       <div>
         <button onClick={handleFormSubmit}>Update</button>
+        <label> </label>
+        {msg ? <label>Error: {msg}</label> : null}
       </div>
     </div>
   );
@@ -140,11 +155,13 @@ export const CustomerForm = () => {
         </label>
         <br />
         <label>
-          Phone (XXX-XXX-XXXX): <input name="phone" onChange={handleFormChange} />
+          Phone (XXX-XXX-XXXX):{" "}
+          <input name="phone" onChange={handleFormChange} />
         </label>
         <br />
         <label>
-          Start Date (XX/XX/XXXX): <input name="startDate" onChange={handleFormChange} />
+          Start Date (XX/XX/XXXX):{" "}
+          <input name="startDate" onChange={handleFormChange} />
         </label>
       </div>
       <div>
@@ -154,18 +171,17 @@ export const CustomerForm = () => {
   );
 };
 
-
 export const ProductForm = () => {
   const [formState, setFormState] = useState({
     name: "",
     manufacturer: "",
     style: "",
-    purchasePrice: "",
-    salePrice: "",
-    qty: 0,
+    salePrice: -1,
+    qty: -1,
     // commission percent
-    commission: 0,
+    commission: -1,
   });
+  const [msg, setMsg] = useState();
 
   function handleFormChange(evt) {
     setFormState({
@@ -176,12 +192,11 @@ export const ProductForm = () => {
 
   function handleFormSubmit() {
     const info = { ...formState };
-    console.log(info);
+    // console.log(info);
     const product = {
       name: info.name,
       manufacturer: info.manufacturer,
       style: info.style,
-      purchasePrice: info.purchasePrice,
       salePrice: info.salePrice,
       qty: info.qty,
       // commission percent
@@ -196,13 +211,22 @@ export const ProductForm = () => {
         "API-Key": "secret",
       },
       body: body,
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.message !== "success") {
+        console.log(data.message);
+        setMsg(data.message);
+      } else {
+        setMsg();
+      }
     });
   }
 
   return (
     <div>
       <div>
-        <h3>Update Product</h3>
+        <h3>Update or Add Product</h3>
       </div>
       <div>
         <label>
@@ -210,7 +234,8 @@ export const ProductForm = () => {
         </label>
         <br />
         <label>
-          Manufacturer: <input name="manufacturer" onChange={handleFormChange} />
+          Manufacturer:{" "}
+          <input name="manufacturer" onChange={handleFormChange} />
         </label>
         <br />
         <label>
@@ -218,23 +243,23 @@ export const ProductForm = () => {
         </label>
         <br />
         <label>
-          Purchase Price: <input name="purchasePrice" onChange={handleFormChange} />
+          Sale Price ($):{" "}
+          <input name="salePrice" onChange={handleFormChange} />
         </label>
         <br />
         <label>
-          Sale Price: <input name="salePrice" onChange={handleFormChange} />
+          Quantity: <input name="qty" onChange={handleFormChange} />
         </label>
         <br />
         <label>
-          Quantity: <input name="endDate" onChange={handleFormChange} />
-        </label>
-        <br />
-        <label>
-          Commission: <input name="manager" onChange={handleFormChange} />
+          Commission (%):{" "}
+          <input name="commission" onChange={handleFormChange} />
         </label>
       </div>
       <div>
         <button onClick={handleFormSubmit}>Update</button>
+        <label> </label>
+        {msg ? <label>Error: {msg}</label> : null}
       </div>
     </div>
   );
@@ -245,11 +270,12 @@ export const SaleForm = () => {
     product: "",
     customer: "",
     date: "",
-    price: "",
+    price: -1,
     salesperson: "",
     // commission amount
-    commission: "",
+    commission: -1,
   });
+  const [msg, setMsg] = useState();
 
   function handleFormChange(evt) {
     setFormState({
@@ -257,29 +283,39 @@ export const SaleForm = () => {
       [evt.target.name]: evt.target.value,
     });
   }
-
+  // let error = null;
   function handleFormSubmit() {
     const info = { ...formState };
     // console.log(info);
     const sale = {
       product: info.product,
-      customer: info.customer,
+      manufacturer: info.manufacturer,
+      style: info.style,
+      customerFirst: info.customerFirst,
+      customerLast: info.customerLast,
       date: info.date,
-      price: info.price,
-      salesperson: info.salesperson,
-      // commission amount
-      commission: info.commission,
+      salespersonFirst: info.salespersonFirst,
+      salespersonLast: info.salespersonLast,
     };
     const body = JSON.stringify(sale);
-
-    var response = fetch("http://localhost:3001/sale", {
+    // try {
+    let response = fetch("http://localhost:3001/sale", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "API-Key": "secret",
       },
       body: body,
-    });
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message !== "success") {
+          console.log(data.message);
+          setMsg(data.message);
+        } else {
+          setMsg();
+        }
+      });
   }
 
   return (
@@ -290,30 +326,44 @@ export const SaleForm = () => {
       <div>
         <label>
           Product: <input name="product" onChange={handleFormChange} />
+          <label> </label>
+          <label>
+            Manufacturer:{" "}
+            <input name="manufacturer" onChange={handleFormChange} />
+          </label>
+          <label> </label>
+          <label>
+            Style: <input name="style" onChange={handleFormChange} />
+          </label>
         </label>
         <br />
         <label>
-          Customer: <input name="customer" onChange={handleFormChange} />
+          Customer First Name:{" "}
+          <input name="customerFirst" onChange={handleFormChange} />
+        </label>
+        <label> </label>
+        <label>
+          Last Name: <input name="customerLast" onChange={handleFormChange} />
         </label>
         <br />
         <label>
-          Date: <input name="date" onChange={handleFormChange} />
+          Date (XX/XX/XXXX): <input name="date" onChange={handleFormChange} />
         </label>
         <br />
         <label>
-          Price: <input name="price" onChange={handleFormChange} />
+          Salesperson First Name:{" "}
+          <input name="salespersonFirst" onChange={handleFormChange} />
         </label>
-        <br />
+        <label> </label>
         <label>
-          Salesperson: <input name="salesperson" onChange={handleFormChange} />
-        </label>
-        <br />
-        <label>
-          Commission ($): <input name="commission" onChange={handleFormChange} />
+          Last Name:{" "}
+          <input name="salespersonLast" onChange={handleFormChange} />
         </label>
       </div>
       <div>
         <button onClick={handleFormSubmit}>Add</button>
+        <label> </label>
+        {msg ? <label>Error: {msg}</label> : null}
       </div>
     </div>
   );
