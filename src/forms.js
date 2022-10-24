@@ -107,7 +107,7 @@ export const SalespersonForm = () => {
       <br />
       <div>
         <button onClick={handleFormSubmit}>Update</button>
-        <label> </label>
+        <br />
         {msg ? <label>Error: {msg}</label> : null}
       </div>
     </div>
@@ -286,7 +286,7 @@ export const ProductForm = () => {
       <br />
       <div>
         <button onClick={handleFormSubmit}>Update</button>
-        <label> </label>
+        <br />
         {msg ? <label>Error: {msg}</label> : null}
       </div>
     </div>

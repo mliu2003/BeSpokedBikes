@@ -1,6 +1,6 @@
 export const productListColumns = [
   {
-    Header: "Product Info",
+    Header: " ",
     columns: [
       {
         Header: "Product Name",
@@ -43,7 +43,7 @@ export const productListColumns = [
 
 export const salespersonListColumns = [
   {
-    Header: "Name",
+    Header: " ",
     columns: [
       {
         Header: "First Name",
@@ -57,7 +57,7 @@ export const salespersonListColumns = [
     width: "30%",
   },
   {
-    Header: "Info",
+    Header: " ",
     columns: [
       {
         Header: "Address",
@@ -90,7 +90,7 @@ export const salespersonListColumns = [
 
 export const customerListColumns = [
   {
-    Header: "Name",
+    Header: " ",
     columns: [
       {
         Header: "First Name",
@@ -104,7 +104,7 @@ export const customerListColumns = [
     width: "40%",
   },
   {
-    Header: "Info",
+    Header: " ",
     columns: [
       {
         Header: "Address",
@@ -127,7 +127,7 @@ export const customerListColumns = [
 
 export const saleListColumns = [
   {
-    Header: "Info",
+    Header: " ",
     columns: [
       {
         Header: "Product",
