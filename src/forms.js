@@ -122,6 +122,7 @@ export const CustomerForm = () => {
     phone: "",
     startDate: "",
   });
+  const [msg, setMsg] = useState();
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -150,6 +151,14 @@ export const CustomerForm = () => {
         "API-Key": "secret",
       },
       body: body,
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.message !== "success") {
+        setMsg(data.message);
+      } else {
+        setMsg();
+      }
     });
     state.render === 1 ? dispatch({ render: 0 }) : dispatch({ render: 1 });
   }
@@ -193,6 +202,8 @@ export const CustomerForm = () => {
       <br />
       <div>
         <button onClick={handleFormSubmit}>Add</button>
+        <br />
+        {msg ? <label>Error: {msg}</label> : null}
       </div>
     </div>
   );

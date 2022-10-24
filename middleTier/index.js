@@ -189,6 +189,7 @@ app.post("/customer", (req, res) => {
         console.log(err);
       }
     });
+    res.json({ message: "success" });
   }
 });
 

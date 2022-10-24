@@ -117,17 +117,6 @@
       "endDate": "12/12/2023",
       "manager": "Bike King",
       "commission": 0
-    },
-    {
-      "id": 6,
-      "firstName": "Tricycle",
-      "lastName": "Maker",
-      "address": "",
-      "phone": "",
-      "startDate": "",
-      "endDate": "",
-      "manager": "",
-      "commission": 0
     }
   ],
   "customerList": [
